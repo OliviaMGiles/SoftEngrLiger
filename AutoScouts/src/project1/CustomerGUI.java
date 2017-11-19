@@ -36,6 +36,7 @@ public class CustomerGUI extends javax.swing.JFrame {
         ScanItemsButton = new javax.swing.JButton();
         CompleteCheckoutButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         PaymentPanel = new javax.swing.JPanel();
         CashButton = new javax.swing.JButton();
         CardButton = new javax.swing.JButton();
@@ -44,7 +45,6 @@ public class CustomerGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(220, 220, 220));
         setMaximumSize(new java.awt.Dimension(1000, 1000));
-        setPreferredSize(new java.awt.Dimension(550, 600));
 
         CustomerPanel.setMaximumSize(new java.awt.Dimension(1000, 1000));
         CustomerPanel.setPreferredSize(new java.awt.Dimension(550, 600));
@@ -59,30 +59,20 @@ public class CustomerGUI extends javax.swing.JFrame {
         CheckoutConsole.setRows(5);
         jScrollPane1.setViewportView(CheckoutConsole);
 
+        ScanItemsButton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         ScanItemsButton.setText("Scan Items");
-        ScanItemsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ScanItemsButtonActionPerformed(evt);
-            }
-        });
 
-        CompleteCheckoutButton.setBackground(new java.awt.Color(0, 0, 220));
+        CompleteCheckoutButton.setBackground(new java.awt.Color(135, 206, 250));
         CompleteCheckoutButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         CompleteCheckoutButton.setText("Complete Checkout");
-        CompleteCheckoutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CompleteCheckoutButtonActionPerformed(evt);
-            }
-        });
 
-        CancelButton.setBackground(new java.awt.Color(220, 0, 0));
+        CancelButton.setBackground(new java.awt.Color(240, 90, 90));
         CancelButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         CancelButton.setText("Cancel");
-        CancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelButtonActionPerformed(evt);
-            }
-        });
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(20, 80, 170));
+        jLabel1.setText("Checkout");
 
         javax.swing.GroupLayout CheckoutPanelLayout = new javax.swing.GroupLayout(CheckoutPanel);
         CheckoutPanel.setLayout(CheckoutPanelLayout);
@@ -91,22 +81,32 @@ public class CustomerGUI extends javax.swing.JFrame {
             .addGroup(CheckoutPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CheckoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ScanItemsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CompleteCheckoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(CheckoutPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(CheckoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ScanItemsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CompleteCheckoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(CancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(CheckoutPanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         CheckoutPanelLayout.setVerticalGroup(
             CheckoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CheckoutPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(CheckoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(CheckoutPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(CheckoutPanelLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
                         .addComponent(ScanItemsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(CompleteCheckoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -115,24 +115,14 @@ public class CustomerGUI extends javax.swing.JFrame {
 
         CustomerPanel.add(CheckoutPanel, "CheckoutCard");
 
-        CashButton.setBackground(new java.awt.Color(0, 220, 0));
+        CashButton.setBackground(new java.awt.Color(70, 170, 0));
         CashButton.setText("Pay By Cash");
 
-        CardButton.setBackground(new java.awt.Color(0, 0, 220));
+        CardButton.setBackground(new java.awt.Color(135, 206, 250));
         CardButton.setText("Pay By Card");
-        CardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CardButtonActionPerformed(evt);
-            }
-        });
 
-        CancelPaymentButton.setBackground(new java.awt.Color(220, 0, 0));
+        CancelPaymentButton.setBackground(new java.awt.Color(240, 90, 90));
         CancelPaymentButton.setText("Cancel");
-        CancelPaymentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelPaymentButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout PaymentPanelLayout = new javax.swing.GroupLayout(PaymentPanel);
         PaymentPanel.setLayout(PaymentPanelLayout);
@@ -174,28 +164,6 @@ public class CustomerGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CancelButtonActionPerformed
-
-    private void CompleteCheckoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompleteCheckoutButtonActionPerformed
-        CardLayout CustomerCards = (CardLayout)CustomerPanel.getLayout();
-        CustomerCards.show(CustomerPanel, "PaymentCard");
-    }//GEN-LAST:event_CompleteCheckoutButtonActionPerformed
-
-    private void ScanItemsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScanItemsButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ScanItemsButtonActionPerformed
-
-    private void CardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CardButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CardButtonActionPerformed
-
-    private void CancelPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelPaymentButtonActionPerformed
-        CardLayout CustomerCards = (CardLayout)CustomerPanel.getLayout();
-        CustomerCards.show(CustomerPanel, "CheckoutCard");
-    }//GEN-LAST:event_CancelPaymentButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -232,16 +200,17 @@ public class CustomerGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CancelButton;
-    private javax.swing.JButton CancelPaymentButton;
-    private javax.swing.JButton CardButton;
-    private javax.swing.JButton CashButton;
+    public javax.swing.JButton CancelButton;
+    public javax.swing.JButton CancelPaymentButton;
+    public javax.swing.JButton CardButton;
+    public javax.swing.JButton CashButton;
     private javax.swing.JTextArea CheckoutConsole;
-    private javax.swing.JPanel CheckoutPanel;
-    private javax.swing.JButton CompleteCheckoutButton;
-    private javax.swing.JPanel CustomerPanel;
-    private javax.swing.JPanel PaymentPanel;
-    private javax.swing.JButton ScanItemsButton;
+    public javax.swing.JPanel CheckoutPanel;
+    public javax.swing.JButton CompleteCheckoutButton;
+    public javax.swing.JPanel CustomerPanel;
+    public javax.swing.JPanel PaymentPanel;
+    public javax.swing.JButton ScanItemsButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
