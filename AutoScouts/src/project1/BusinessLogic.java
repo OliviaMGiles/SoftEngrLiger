@@ -22,7 +22,7 @@ public class BusinessLogic {
         MenuGUI menu = new MenuGUI();
         menu.setVisible(true);
         
-        CustomerGUI checkout = new CustomerGUI();
+        CheckoutGUI checkout = new CheckoutGUI();
         RestockerGUI restock = new RestockerGUI();
         ManagerGUI manage = new ManagerGUI();
         ScannerInterface scan = new ScannerInterface();
@@ -42,14 +42,17 @@ public class BusinessLogic {
         // <editor-fold>
         menu.CheckoutButton.addActionListener((ActionEvent goToCheckout) -> {
             checkout.setVisible(true);
+            menu.setVisible(false);
         });
         
         menu.RestockButton.addActionListener((ActionEvent goToRestock) -> {
             restock.setVisible(true);
+            menu.setVisible(false);
         });
         
         menu.ManageButton.addActionListener((ActionEvent goToManage) -> {
             manage.setVisible(true);
+            menu.setVisible(false);
         });
         // </editor-fold>
         
@@ -87,23 +90,53 @@ public class BusinessLogic {
         // CHECKOUT.CASHPANEL ACTION LISTENERS
         // <editor-fold>
         checkout.CardButton2.addActionListener((ActionEvent goToCard) -> {
-            CustomerCards.show(checkout.CustomerPanel, "CashPanel");
+            CustomerCards.show(checkout.CustomerPanel, "CardPanel");
         });
         
-        checkout.CancelCash.addActionListener((ActionEvent goToCard) -> {
-            CustomerCards.show(checkout.CustomerPanel, "CardPanel");
+        checkout.CancelCash.addActionListener((ActionEvent returnToCheckout) -> {
+            CustomerCards.show(checkout.CustomerPanel, "CheckoutCard");
         });
         // </editor-fold>
         
         // CHECKOUT.CASHPANEL MONEY BUTTON ACTION LISTENERS
         // <editor-fold>
+        checkout.$20Button.addActionListener((ActionEvent goToCard) -> {
+            checkout.CashConsole.append("$20 inserted\t\t-$20.00\n");
+        });
         
+        checkout.$10Button.addActionListener((ActionEvent returnToCheckout) -> {
+            checkout.CashConsole.append("$10 inserted\t\t-$10.00\n");
+        });
+        
+        checkout.$5Button.addActionListener((ActionEvent goToCard) -> {
+            checkout.CashConsole.append("$5 inserted\t\t-$  5.00\n");
+        });
+        
+        checkout.$1Button.addActionListener((ActionEvent returnToCheckout) -> {
+            checkout.CashConsole.append("$1 inserted\t\t-$  1.00\n");
+        });
+        
+        checkout.QuarterButton.addActionListener((ActionEvent goToCard) -> {
+            checkout.CashConsole.append("25¢ inserted\t\t-$    .25\n");
+        });
+        
+        checkout.DimeButton.addActionListener((ActionEvent returnToCheckout) -> {
+            checkout.CashConsole.append("10¢ inserted\t\t-$    .10\n");
+        });
+        
+        checkout.NickelButton.addActionListener((ActionEvent goToCard) -> {
+            checkout.CashConsole.append("5¢ inserted\t\t-$    .05\n");
+        });
+        
+        checkout.PennyButton.addActionListener((ActionEvent returnToCheckout) -> {
+            checkout.CashConsole.append("1¢ inserted\t\t-$    .01\n");
+        });
         // </editor-fold>
         
         // CHECKOUT.CARDPANEL ACTION LISTENERS
         // <editor-fold>
         checkout.SwipeButton.addActionListener((ActionEvent swipeCard) -> {
-            CustomerCards.show(checkout.CustomerPanel, "CashPanel");
+            //IMPLEMENT
         });
         
         checkout.CashButton2.addActionListener((ActionEvent goToCash) -> {
